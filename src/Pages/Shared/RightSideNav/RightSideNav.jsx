@@ -3,6 +3,7 @@ import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from "react-ic
 import qZone1 from "../../../assets/qZone1.png"
 import qZone2 from "../../../assets/qZone2.png"
 import qZone3 from "../../../assets/qZone3.png"
+import rightSideBackground from "../../../assets/bg.png"
 
 const RightSideNav = () => {
     return (
@@ -31,10 +32,27 @@ const RightSideNav = () => {
 
             <h3 className="text-2xl font-bold my-4">Q-Zone</h3>
             <div className="">
-                <img className="mx-auto" src={qZone1} alt=""/>
-                <img className="mx-auto" src={qZone2} alt=""/>
-                <img className="mx-auto" src={qZone3} alt=""/>
+                <img className="mx-auto" src={qZone1} alt="" />
+                <img className="mx-auto" src={qZone2} alt="" />
+                <img className="mx-auto" src={qZone3} alt="" />
                 {/* ok done */}
+            </div>
+
+            <div
+                className="hero w-fit"
+                style={{
+                    backgroundImage: `url(${rightSideBackground})`,
+                }}>
+                <div className="hero-overlay bg-opacity-60"></div>
+                <div className="hero-content text-neutral-content text-center">
+                    <div className="max-w-md">
+                        <h1 className="mb-5 text-lg font-bold">Create an Amazing Newspaper</h1>
+                        <p className="mb-5 text-base">
+                        Discover thousands of options, easy to customize layouts, one-click to import demo and much more.
+                        </p>
+                        <button className="btn btn-error text-white">Learn More</button>
+                    </div>
+                </div>
             </div>
         </div>
     );
