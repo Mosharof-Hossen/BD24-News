@@ -1,5 +1,5 @@
 
-import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa6";
+import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from "react-icons/fa6";
 
 
 const RightSideNav = () => {
@@ -12,10 +12,18 @@ const RightSideNav = () => {
             </div>
 
             <h3 className="text-2xl font-bold my-4">Find Us on</h3>
-            <div className="space-y-2">
+            <div className="">
                 <a href="" className="flex space-x-2 items-center border-2 rounded-t-lg p-4">
                     <FaFacebook></FaFacebook>
                     <span>Facebook</span>
+                </a>
+                <a href="" className="flex space-x-2 items-center border-x-2  p-4">
+                    <FaInstagram></FaInstagram>
+                    <span>Instagram</span>
+                </a>
+                <a href="" className="flex space-x-2 items-center border-2 rounded-b-lg p-4">
+                    <FaTwitter></FaTwitter>
+                    <span>Twitter</span>
                 </a>
             </div>
         </div>
