@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: '"Poppins", sans-serif',
+        pacifico: '"Pacifico", cursive'
+      }
+    },
   },
   // eslint-disable-next-line no-undef
   plugins: [require('daisyui'),],
