@@ -1,10 +1,10 @@
 
 import PropTypes from 'prop-types';
-import { FaBookmark, FaShareNodes } from 'react-icons/fa6';
+import { FaBookmark, FaRegEye, FaShareNodes } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 const MainNewsCard = ({ feedNews }) => {
-    const { _id, image_url, author,title ,details} = feedNews;
+    const { _id, image_url, author, title, details, rating,total_view } = feedNews;
     console.log(feedNews);
     return (
         <div className='border rounded'>
@@ -26,13 +26,33 @@ const MainNewsCard = ({ feedNews }) => {
                     <FaShareNodes></FaShareNodes>
                 </div>
             </div>
-            <div className='p-4 space-y-4'>
-                <h3 className='text-xl font-bold'>{title}</h3>
+            <div className='p-4 space-y-4 text-gray-500'>
+                <h3 className='text-xl font-bold text-black'>{title}</h3>
                 <img src={image_url} alt="" className='rounded-lg' />
-                
+
                 {
-                    details.length > 200 ? <p>{details.slice(0,200)}... <Link to={`/news/${_id}`} className='text-blue-600 font-bold'> Read More</Link></p>:<p>{details}</p>
+                    details.length > 200 ? <p>{details.slice(0, 200)}... <Link to={`/news/${_id}`} className='text-blue-600 font-bold'> Read More</Link></p> : <p>{details}</p>
                 }
+            </div>
+
+            <hr className='mx-4' />
+            <div className='text-gray-500 p-4 flex justify-between'>
+                <div className='flex space-x-3 '>
+                    <div className="rating">
+                        <input type="radio" name={`rating-${_id}`} className="mask mask-star-2 bg-orange-400" />
+
+                        <input type="radio" name={`rating-${_id}`} className="mask mask-star-2 bg-orange-400" />
+                        <input type="radio" name={`rating-${_id}`} className="mask mask-star-2 bg-orange-400" />
+                        <input type="radio" name={`rating-${_id}`} className="mask mask-star-2 bg-orange-400" />
+                        <input type="radio" name={`rating-${_id}`} className="mask mask-star-2 bg-orange-400" defaultChecked />
+                    </div>
+                    <p>{rating?.number}</p>
+                </div>
+
+                <div className='flex space-x-2 items-center'>
+                    <FaRegEye></FaRegEye>
+                    <p>{total_view}</p>
+                </div>
             </div>
         </div>
     );
