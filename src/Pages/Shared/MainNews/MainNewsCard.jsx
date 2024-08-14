@@ -1,12 +1,14 @@
 
 import PropTypes from 'prop-types';
 import { FaBookmark, FaShareNodes } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 const MainNewsCard = ({ feedNews }) => {
-    const { image_url, author } = feedNews;
+    const { _id, image_url, author,title ,details} = feedNews;
+    console.log(feedNews);
     return (
-        <div className='border'>
-            <div className='flex justify-between items-center p-4'>
+        <div className='border rounded'>
+            <div className='flex justify-between items-center p-4 bg-gray-100'>
                 <div className='flex items-center space-x-3'>
                     <div className="avatar">
                         <div className="w-12 h-12 rounded-full">
@@ -23,6 +25,14 @@ const MainNewsCard = ({ feedNews }) => {
                     <FaBookmark></FaBookmark>
                     <FaShareNodes></FaShareNodes>
                 </div>
+            </div>
+            <div className='p-4 space-y-4'>
+                <h3 className='text-xl font-bold'>{title}</h3>
+                <img src={image_url} alt="" className='rounded-lg' />
+                
+                {
+                    details.length > 200 ? <p>{details.slice(0,200)}... <Link to={`/news/${_id}`} className='text-blue-600 font-bold'> Read More</Link></p>:<p>{details}</p>
+                }
             </div>
         </div>
     );
