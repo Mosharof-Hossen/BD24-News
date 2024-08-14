@@ -8,13 +8,13 @@ import rightSideBackground from "../../../assets/bg.png"
 const RightSideNav = () => {
     return (
         <div className="font-poppins p-4">
-            <h3 className="text-2xl font-bold mb-4">Login With</h3>
+            <h3 className="text-xl font-bold mb-4">Login With</h3>
             <div className="space-y-2">
                 <button className="btn border w-full"><FaGoogle className="h-4 w-4"></FaGoogle> Login with Google</button>
                 <button className="btn border w-full"><FaGithub className="h-4 w-4"></FaGithub> Login with Github</button>
             </div>
 
-            <h3 className="text-2xl font-bold my-4">Find Us on</h3>
+            <h3 className="text-xl font-bold my-4">Find Us on</h3>
             <div className="">
                 <a href="" className="flex space-x-2 items-center border-2 rounded-t-lg p-4">
                     <FaFacebook></FaFacebook>
@@ -30,7 +30,7 @@ const RightSideNav = () => {
                 </a>
             </div>
 
-            <h3 className="text-2xl font-bold my-4">Q-Zone</h3>
+            <h3 className="text-xl font-bold my-4">Q-Zone</h3>
             <div className="">
                 <img className="mx-auto" src={qZone1} alt="" />
                 <img className="mx-auto" src={qZone2} alt="" />
@@ -39,7 +39,7 @@ const RightSideNav = () => {
             </div>
 
             <div
-                className="hero w-fit"
+                className="hero w-fit mx-auto"
                 style={{
                     backgroundImage: `url(${rightSideBackground})`,
                 }}>
