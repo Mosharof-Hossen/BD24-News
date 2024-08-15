@@ -3,6 +3,13 @@ import Navbar from "../Shared/Navbar/Navbar";
 
 
 const Login = () => {
+    const handleLogin = e => {
+        e.preventDefault();
+        const form = new FormData(e.currentTarget);
+        const email = form.get('email');
+        const password = form.get('password');
+        console.log(email, password);
+    }
     return (
         <div className="bg-[#F3F3F3]">
             <Navbar></Navbar>
@@ -11,7 +18,7 @@ const Login = () => {
                     <div className="card bg-base-100 lg:w-1/2 shrink-0 shadow-2xl p-3 md:p-10">
                         <h1 className="text-3xl font-bold text-center mb-10">Login your Account!</h1>
                         <hr />
-                        <form className="card-body">
+                        <form onSubmit={handleLogin} className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
