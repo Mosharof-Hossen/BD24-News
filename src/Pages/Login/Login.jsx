@@ -1,14 +1,25 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 
 const Login = () => {
+    const { signInUsingEmailPassword } = useContext(AuthContext);
     const handleLogin = e => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
         const email = form.get('email');
         const password = form.get('password');
         console.log(email, password);
+
+        // signInUsingEmailPassword
+        signInUsingEmailPassword(email, password)
+            .then(result => console.log(result))
+            .catch(err => {
+                console.log(err.message);
+            })
+
     }
     return (
         <div className="bg-[#F3F3F3]">
