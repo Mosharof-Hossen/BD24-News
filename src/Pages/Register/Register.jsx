@@ -17,7 +17,6 @@ const Register = () => {
         const password = form.get('password');
         const condition = form.get("condition");
 
-        console.log(name, url, email, password, condition);
         if(!condition){
             alert("Accept Term and Condition")
             return
@@ -39,8 +38,8 @@ const Register = () => {
                 })
 
             })
-            .catch((err) => {
-                console.log(err.message);
+            .catch(() => {
+                alert("This email already in use");
             })
 
     }

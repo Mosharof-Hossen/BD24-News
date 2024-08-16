@@ -18,7 +18,7 @@ const About = () => {
                 </div>
                 <div className="space-y-2">
                     <h2 className="text-3xl font-semibold">What We Do</h2>
-                    <p>We cover a wide range of topics, from breaking news to in-depth feature stories, providing context and clarity in an ever-changing world. Our content is designed to be accessible to everyone, whether you're a news junkie, a casual reader, or someone looking for a fresh perspective.</p>
+                    <p>We cover a wide range of topics, from breaking news to in-depth feature stories, providing context and clarity in an ever-changing world. Our content is designed to be accessible to everyone, whether you are a news junkie, a casual reader, or someone looking for a fresh perspective.</p>
                 </div>
                 <div className="space-y-2">
                     <h2 className="text-3xl font-semibold">Who We Are</h2>

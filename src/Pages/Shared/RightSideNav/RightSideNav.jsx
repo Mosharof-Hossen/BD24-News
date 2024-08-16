@@ -4,13 +4,30 @@ import qZone1 from "../../../assets/qZone1.png"
 import qZone2 from "../../../assets/qZone2.png"
 import qZone3 from "../../../assets/qZone3.png"
 import rightSideBackground from "../../../assets/bg.png"
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const RightSideNav = () => {
+    const { singInwithGoogle } = useContext(AuthContext);
+
+    const handleGoogleSingIn = () => {
+        singInwithGoogle()
+            .then(() => {
+                alert("Login Successfully")
+            })
+            .catch(() => {
+
+            })
+    }
+    const handleGithubSingIn = () => {
+        alert("")
+    }
+
     return (
         <div className="font-poppins p-4">
             <h3 className="text-xl font-bold mb-4">Login With</h3>
             <div className="space-y-2">
-                <button className="btn border w-full"><FaGoogle className="h-4 w-4"></FaGoogle> Login with Google</button>
+                <button onClick={handleGoogleSingIn} className="btn border w-full"><FaGoogle className="h-4 w-4"></FaGoogle> Login with Google</button>
                 <button className="btn border w-full"><FaGithub className="h-4 w-4"></FaGithub> Login with Github</button>
             </div>
 
@@ -48,7 +65,7 @@ const RightSideNav = () => {
                     <div className="max-w-md">
                         <h1 className="mb-5 text-lg font-bold">Create an Amazing Newspaper</h1>
                         <p className="mb-5 text-base">
-                        Discover thousands of options, easy to customize layouts, one-click to import demo and much more.
+                            Discover thousands of options, easy to customize layouts, one-click to import demo and much more.
                         </p>
                         <button className="btn btn-error text-white">Learn More</button>
                     </div>
