@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
 
 export const AuthContext = createContext(null);
@@ -28,6 +28,11 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
+    // Forget password recover
+    const passwordUpdate = (email) => {
+        return sendPasswordResetEmail(auth, email);
+    }
+
 
     // onAuthStateChanged
     useEffect(() => {
@@ -47,7 +52,8 @@ const AuthProvider = ({ children }) => {
         createUserUsingEmailPassword,
         signInUsingEmailPassword,
         logOut,
-        loading
+        loading,
+        passwordUpdate
     };
 
     console.log(user);

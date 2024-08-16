@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,24 +9,41 @@ import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location);
+    const [loginMessage, setLoginMessage] = useState("")
+    const emailRef = useRef();
 
-    const { signInUsingEmailPassword } = useContext(AuthContext);
+    const { signInUsingEmailPassword, passwordUpdate } = useContext(AuthContext);
+
     const handleLogin = e => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
         const email = form.get('email');
         const password = form.get('password');
-        console.log(email, password);
-
         // signInUsingEmailPassword
         signInUsingEmailPassword(email, password)
             .then(() => {
                 toast("Login Successfully");
-                navigate(location?.state ? location.state :"/");
+                navigate(location?.state ? location.state : "/");
+                setLoginMessage("")
             })
-            .catch(err => {
-                console.log(err.message);
+            .catch(() => {
+                setLoginMessage("Invalid Email or Password")
+            })
+    }
+
+    const handleForgetPassword = () => {
+        const email = emailRef.current.value;
+        if (!email) {
+            alert("Provide Your Email");
+            return
+        }
+
+        passwordUpdate(email)
+            .then(()=>{
+                alert("Check Your Email and Reset The Password.")
+            })
+            .catch(()=>{
+                alert("Provide Valid Email")
             })
 
     }
@@ -44,7 +61,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" name="email" placeholder="Enter your email address" className="input input-bordered" required />
+                                <input ref={emailRef} type="email" name="email" placeholder="Enter your email address" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -52,12 +69,13 @@ const Login = () => {
                                 </label>
                                 <input type="password" name="password" placeholder="Enter your password" className="input input-bordered" required />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <a onClick={handleForgetPassword} href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            <div className="form-control mt-6">
+                            <div className="form-control mt-6 space-y-2">
                                 <button className="btn bg-black text-white">Login</button>
                                 <ToastContainer />
+                                <p className="text-red-600 text-center">{loginMessage}</p>
                                 <p className="text-center my-6 font-semibold">Do not Have An Account? <span className="text-red-600"><Link to={'/register'}>Register</Link></span></p>
                             </div>
                         </form>
