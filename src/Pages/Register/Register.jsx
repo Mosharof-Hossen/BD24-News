@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 
 const Register = () => {
-    const { createUserUsingEmailPassword } = useContext(AuthContext);
-
+    const { createUserUsingEmailPassword , userUpdateProfile} = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const handleRegister = e => {
         e.preventDefault();
@@ -18,11 +18,26 @@ const Register = () => {
         const condition = form.get("condition");
 
         console.log(name, url, email, password, condition);
-
+        if(!condition){
+            alert("Accept Term and Condition")
+            return
+        }
         // createUserUsingEmailPassword
         createUserUsingEmailPassword(email, password)
             .then(result => {
                 console.log(result.user);
+                userUpdateProfile(result.user, {
+                    displayName:name,
+                    photoURL: url
+                })
+                .then(()=>{
+                    navigate("/")
+
+                })
+                .catch(()=>{
+                    alert("Provide valid all information")
+                })
+
             })
             .catch((err) => {
                 console.log(err.message);
@@ -55,7 +70,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Photo Url</span>
                                 </label>
-                                <input type="text" name="photoUrl" placeholder="Enter your photo url" className="input input-bordered" required />
+                                <input type="text" value={"https://i.ibb.co/HPcnyMP/profile.png"} name="photoUrl" placeholder="Enter your photo url" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
