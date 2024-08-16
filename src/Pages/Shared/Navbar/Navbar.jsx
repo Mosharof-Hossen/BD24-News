@@ -21,7 +21,7 @@ const Navbar = () => {
         <li><NavLink to={"/about"}>About</NavLink></li>
         <li><NavLink to={"/career"}>Career</NavLink></li>
     </>
-
+    
     return (
         <div className="navbar bg-base-100 my-4">
 
@@ -61,7 +61,7 @@ const Navbar = () => {
                     <div className="w-10 rounded-full">
                         <img
                             alt="Tailwind CSS Navbar component"
-                            src={defaultUserImage} />
+                            src={user? user.photoURL : defaultUserImage} />
                     </div>
                 </div>
                 {
