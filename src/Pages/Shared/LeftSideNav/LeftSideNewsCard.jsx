@@ -6,7 +6,6 @@ import { FaCalendarDays } from 'react-icons/fa6';
 const LeftSideNewsCard = ({ news }) => {
     const { image_url, title } = news;
 
-    console.log(news);
     return (
         <div className="card  w-full rounded">
             <figure>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const MainNewsCard = ({ feedNews }) => {
     const { _id, image_url, author, title, details, rating,total_view } = feedNews;
-    console.log(feedNews);
+ 
     return (
         <div className='border rounded'>
             <div className='flex justify-between items-center p-4 bg-gray-100'>

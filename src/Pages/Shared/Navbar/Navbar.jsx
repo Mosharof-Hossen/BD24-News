@@ -2,17 +2,18 @@ import { Link, NavLink } from "react-router-dom";
 import defaultUserImage from "../../../assets/user.png"
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
-    const { user,logOut } = useContext(AuthContext);
-    console.log(user);
-    const handleSingOut =()=>{
+    const { user, logOut } = useContext(AuthContext);
+    const handleSingOut = () => {
         logOut()
-        .then(res=>{
-            console.log("LogOut Successfully");
-        }).catch((err)=>{
-            console.log(err.message);
-        })
+            .then(() => {
+                toast("Logout Successfully.")
+            }).catch((err) => {
+                console.log(err.message);
+            })
     }
 
     const links = <>
@@ -23,6 +24,7 @@ const Navbar = () => {
 
     return (
         <div className="navbar bg-base-100 my-4">
+
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -64,12 +66,16 @@ const Navbar = () => {
                 </div>
                 {
                     user ?
-                        <button onClick={handleSingOut} className="btn text-white bg-gray-700">Sign Out</button>
+                        <>
+                            <button onClick={handleSingOut} className="btn text-white bg-gray-700">Sign Out</button>
+
+                        </>
                         :
                         <Link to={"/login"}>
                             <button className="btn text-white bg-gray-700">Login</button>
                         </Link>
                 }
+                <ToastContainer />
             </div>
         </div>
     );

@@ -12,7 +12,6 @@ const MainNews = () => {
             .then(data => setFeedNewsData(data))
     }, [])
 
-    console.log(feedNewsData);
     return (
         <div className="font-poppins p-4">
             <h3 className="text-xl font-bold mb-4 ">News Feed</h3>

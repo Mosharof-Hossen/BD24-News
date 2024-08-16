@@ -1,10 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location);
+
     const { signInUsingEmailPassword } = useContext(AuthContext);
     const handleLogin = e => {
         e.preventDefault();
@@ -15,12 +21,16 @@ const Login = () => {
 
         // signInUsingEmailPassword
         signInUsingEmailPassword(email, password)
-            .then(result => console.log(result))
+            .then(() => {
+                toast("Login Successfully");
+                navigate(location?.state ? location.state :"/");
+            })
             .catch(err => {
                 console.log(err.message);
             })
 
     }
+
     return (
         <div className="bg-[#F3F3F3]">
             <Navbar></Navbar>
@@ -47,6 +57,7 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn bg-black text-white">Login</button>
+                                <ToastContainer />
                                 <p className="text-center my-6 font-semibold">Do not Have An Account? <span className="text-red-600"><Link to={'/register'}>Register</Link></span></p>
                             </div>
                         </form>
