@@ -2,8 +2,8 @@
 
 ## Features: 
 1. It is a News portal website.
-2. Basically we implemented firebase authentication like google singin,github signin, email password singin, Registration etc.
-3. Also we used private route.
+2. Basically I implemented firebase authentication like google singin,github signin, email password singin, Registration etc.
+3. Also I used private route.
 4. Here I used Fake Data.
 
 
