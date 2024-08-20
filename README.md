@@ -20,4 +20,6 @@
 
 6.Use Fake Data
 
+7.React Icons
+
 
